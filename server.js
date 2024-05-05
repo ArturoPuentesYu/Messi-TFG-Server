@@ -1,4 +1,5 @@
 const express = require('express');
+const corsMiddleware = require('./corsConfig');
 require('dotenv').config(); // Ensure dotenv is configured at the top
 const connectDB = require('./config/database');
 
@@ -7,14 +8,18 @@ const app = express();
 // Connect to Database
 connectDB();
 
+// Usar CORS para todas las solicitudes
+app.use(corsMiddleware);
+
 // Require routes
 const userRoutes = require('./routes/user.route.js'); // Ensure the path is correct
-
+const dataRoutes = require('./routes/data.route.js'); // Ensure the path is correct
 // Middleware for parsing application/json
 app.use(express.json());
 
 // Use routes with a base path for all user-related endpoints
-app.use('/api/users', userRoutes);
+app.use('/api/users', corsMiddleware, userRoutes);
+app.use('/api/data', corsMiddleware, dataRoutes);
 
 // Basic route for home to test that the server is running
 app.get('/', (req, res) => {
