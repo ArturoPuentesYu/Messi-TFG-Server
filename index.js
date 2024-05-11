@@ -38,7 +38,7 @@ app.use((err, req, res, next) => {
 });
 
 // Set the port
-const PORT = process.env.PORT || 3001;  // Provide a default port if none is specified in the environment variables
+const PORT = process.env.PORT || 3000;  // Provide a default port if none is specified in the environment variables
 
 // Start the server
 app.listen(PORT, () => {
