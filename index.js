@@ -1,7 +1,7 @@
 const express = require('express');
-const corsMiddleware = require('./corsConfig');
+const corsMiddleware = require('./corsConfig.js');
 require('dotenv').config(); // Ensure dotenv is configured at the top
-const connectDB = require('./config/database');
+const connectDB = require('./config/database.js');
 
 const app = express();
 
@@ -38,7 +38,7 @@ app.use((err, req, res, next) => {
 });
 
 // Set the port
-const PORT = process.env.PORT || 3000;  // Provide a default port if none is specified in the environment variables
+const PORT = process.env.PORT || 3001;  // Provide a default port if none is specified in the environment variables
 
 // Start the server
 app.listen(PORT, () => {
