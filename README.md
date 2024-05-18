@@ -25,4 +25,4 @@ Iniciar la aplicación:
 
 ### Clonar el Repositorio
 git clone https://github.com/ArturoPuentesYu/Messi-TFG-Server.git
-cd Messi-TFG-Back
+cd Messi-TFG-Server
