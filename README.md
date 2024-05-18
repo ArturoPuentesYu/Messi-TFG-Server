@@ -24,5 +24,5 @@ Iniciar la aplicación:
 - Node.js y npm instalados en tu sistema.
 
 ### Clonar el Repositorio
-git clone https://github.com/ArturoPuentesYu/Messi-TFG-Back
+git clone https://github.com/ArturoPuentesYu/Messi-TFG-Server.git
 cd Messi-TFG-Back
