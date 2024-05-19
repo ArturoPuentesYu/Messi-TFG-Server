@@ -4,7 +4,6 @@ const dataService = {
     getMessiStats: async () => {
         try {
             const player = await Player.find({});
-            console.log(player);
             return player;
         } catch (error) {
             throw error;

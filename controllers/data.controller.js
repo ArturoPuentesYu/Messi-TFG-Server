@@ -1,7 +1,6 @@
 const dataService = require('../services/data.service.js');
 
 const dataController = {
-
      getMessiStats: async (req, res) => {
         try {
             const data = await dataService.getMessiStats();

@@ -1,8 +1,5 @@
-// corsConfig.js
 const cors = require('cors');
-
 const whitelist = ['http://localhost:3000', 'http://localhost:5173']; // Lista de orígenes permitidos
-
 const corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1 || !origin) {
@@ -16,7 +13,5 @@ const corsOptions = {
     credentials: true,
     optionsSuccessStatus: 200
 };
-
 const corsMiddleware = cors(corsOptions);
-
 module.exports = corsMiddleware;
