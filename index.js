@@ -2,6 +2,7 @@ const express = require('express');
 const corsMiddleware = require('./corsConfig.js');
 require('dotenv').config(); 
 const connectDB = require('./config/database.js');
+
 const app = express();
 
 // Connectar a la base de datos
@@ -13,12 +14,14 @@ app.use(corsMiddleware);
 // Require routes
 const userRoutes = require('./routes/user.route.js'); 
 const dataRoutes = require('./routes/data.route.js'); 
+const authRoutes = require('./routes/auth.router.js');
 // Middleware para analizar application/json
 app.use(express.json());
 
 // Uso de rutas con una ruta base para todos los puntos de conexión relacionados con la usuaria
 app.use('/api/users', corsMiddleware, userRoutes);
 app.use('/api/data', corsMiddleware, dataRoutes);
+app.use('/api/auth',corsMiddleware, authRoutes);
 
 // Ruta básica para probar que el servidor está operativo
 app.get('/', (req, res) => {
