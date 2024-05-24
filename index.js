@@ -15,6 +15,7 @@ app.use(corsMiddleware);
 const userRoutes = require('./routes/user.route.js'); 
 const dataRoutes = require('./routes/data.route.js'); 
 const authRoutes = require('./routes/auth.router.js');
+const topicRoutes = require('./routes/topic.router.js')
 // Middleware para analizar application/json
 app.use(express.json());
 
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use('/api/users', corsMiddleware, userRoutes);
 app.use('/api/data', corsMiddleware, dataRoutes);
 app.use('/api/auth',corsMiddleware, authRoutes);
+app.use('/api/topics',corsMiddleware, topicRoutes);
 
 // Ruta básica para probar que el servidor está operativo
 app.get('/', (req, res) => {
