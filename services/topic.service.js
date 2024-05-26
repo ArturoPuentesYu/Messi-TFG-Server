@@ -10,16 +10,27 @@ class TopicService {
   async getTopics() {
     return await Topic.find()
       .populate('createdBy', 'name surnames')
-      .populate('comments.createdBy', 'name surnames')
       .sort({ createdAt: -1 });
+  }
+
+  async getTopicById(id) {
+    const topic = await Topic.findById(id)
+      .populate('createdBy', 'name surnames')
+      .populate('comments.createdBy', 'name surnames')
+      .exec();
+
+    if (topic && topic.comments) {
+      topic.comments.sort((a, b) => b.createdAt - a.createdAt);
+    }
+
+    return topic;
   }
 
   async getTopicsPagination(page, limit) {
     const skip = (page - 1) * limit;
-    const total = await Topic.find().count();
+    const total = await Topic.countDocuments();
     const topics = await Topic.find()
       .populate('createdBy', 'name surnames')
-      .populate('comments.createdBy', 'name surnames')
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit);

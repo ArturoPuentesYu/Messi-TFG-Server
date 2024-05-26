@@ -19,10 +19,20 @@ class TopicController {
     }
   }
 
+  async getTopicById(req, res) {
+    try {
+      const { id_topic } = req.params;
+      const topic = await topicService.getTopicById(id_topic);
+      res.status(200).json(topic);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
+
   async getTopicsPagination(req, res) {
     try {
       const page = parseInt(req.query.page) || 1;
-      const limit = parseInt(req.query.limit) || 10;
+      const limit = parseInt(req.query.limit) || 5;
 
       if (page <= 0 || limit <= 0) {
         res
