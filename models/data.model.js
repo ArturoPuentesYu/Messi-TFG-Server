@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Define el esquema "titulo"
 const tituloSchema = new Schema({
-    año: Number,
-    resultado: String
+  año: Number,
+  resultado: String,
 });
 
-// Define el esquema principal
-const playerSchema = new Schema({
+const playerSchema = new Schema(
+  {
     nombre: { type: String, required: true },
     pais: { type: String, required: true },
     club: { type: String, required: false },
@@ -18,13 +17,14 @@ const playerSchema = new Schema({
     tarjetas_amarillas: { type: Number, required: true },
     tarjetas_rojas: { type: Number, required: true },
     debut: { type: Date, required: true },
-    titulos: { type: [tituloSchema], required: false }
-}, {
-    collection: 'player'
-});
+    titulos: { type: [tituloSchema], required: false },
+  },
+  {
+    collection: 'player',
+  }
+);
 
 // Crea el modelo
 const Player = mongoose.model('Player', playerSchema);
 
 module.exports = Player;
-
