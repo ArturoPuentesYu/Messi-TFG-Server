@@ -9,6 +9,14 @@ const userService = {
       throw error;
     }
   },
+  getAllUser: async () => {
+    try {
+      const user = await User.find();
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 module.exports = userService;
